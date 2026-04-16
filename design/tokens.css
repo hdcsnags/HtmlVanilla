@@ -1,0 +1,570 @@
+/**
+ * Design Tokens — Maestro POC
+ * ============================================================
+ * Canonical source-of-truth for every CSS custom property used
+ * inside maestro-poc.html.
+ *
+ * THIS FILE IS NOT IMPORTED AT RUNTIME.
+ * The single-file constraint means all tokens are inlined directly
+ * into the <style> block of maestro-poc.html. Any change made here
+ * MUST be mirrored there, and vice-versa.
+ *
+ * Variable names defined in this file match EXACTLY the names used
+ * in maestro-poc.html so diffs and future extraction tooling work
+ * without renaming.
+ *
+ * Token categories
+ * ────────────────
+ *  1. Color primitives       – raw palette values, not consumed directly
+ *  2. Semantic color tokens  – surface, text, border, status
+ *  3. Accent gradient        – brand gradient definitions
+ *  4. Spacing scale          – t-shirt sizing (2 px base)
+ *  5. Typography scale       – font families, sizes, weights, line-heights
+ *  6. Border radius scale    – from sharp to pill
+ *  7. Shadow scale           – elevation levels
+ *  8. Transition / motion    – durations and easings
+ *  9. Z-index scale          – stacking layers
+ * 10. Layout / grid          – structural dimensions
+ */
+
+:root {
+
+  /* ================================================================
+   * 1. COLOR PRIMITIVES
+   * Raw HSL/hex values. Prefer semantic tokens in component rules.
+   * ================================================================ */
+
+  /* Neutral ramp */
+  --color-neutral-0:    #ffffff;
+  --color-neutral-50:   #f8f9fb;
+  --color-neutral-100:  #f0f2f5;
+  --color-neutral-150:  #e8eaee;
+  --color-neutral-200:  #dde1e7;
+  --color-neutral-300:  #c4cad4;
+  --color-neutral-400:  #a0a9b8;
+  --color-neutral-500:  #7a8599;
+  --color-neutral-600:  #5a6478;
+  --color-neutral-700:  #3d4558;
+  --color-neutral-800:  #252d3d;
+  --color-neutral-850:  #1c2333;
+  --color-neutral-900:  #141926;
+  --color-neutral-950:  #0d1119;
+  --color-neutral-1000: #060810;
+
+  /* Blue / brand ramp */
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+  /* Purple / accent ramp */
+  --color-purple-100: #ede9fe;
+  --color-purple-200: #ddd6fe;
+  --color-purple-300: #c4b5fd;
+  --color-purple-400: #a78bfa;
+  --color-purple-500: #8b5cf6;
+  --color-purple-600: #7c3aed;
+  --color-purple-700: #6d28d9;
+  --color-purple-800: #5b21b6;
+  --color-purple-900: #4c1d95;
+
+  /* Cyan / teal ramp */
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
+
+  /* Green / success ramp */
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+
+  /* Yellow / warning ramp */
+  --color-yellow-100: #fef9c3;
+  --color-yellow-200: #fef08a;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
+  --color-yellow-600: #ca8a04;
+  --color-yellow-700: #a16207;
+  --color-yellow-800: #854d0e;
+  --color-yellow-900: #713f12;
+
+  /* Red / danger ramp */
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+
+  /* Orange / agent accent */
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+
+
+  /* ================================================================
+   * 2. SEMANTIC COLOR TOKENS
+   * Map primitives to intent. Theme overrides replace these.
+   * ================================================================ */
+
+  /* --- Surfaces --- */
+  --color-surface-base:        var(--color-neutral-900);   /* page background       */
+  --color-surface-raised:      var(--color-neutral-850);   /* card / panel          */
+  --color-surface-overlay:     var(--color-neutral-800);   /* modal / popover       */
+  --color-surface-sunken:      var(--color-neutral-950);   /* inset / well          */
+  --color-surface-interactive: var(--color-neutral-800);   /* hover-able control bg */
+  --color-surface-selected:    rgba(99, 102, 241, 0.15);   /* selected row / item   */
+  --color-surface-hover:       rgba(255, 255, 255, 0.04);  /* generic hover overlay */
+
+  /* --- Borders --- */
+  --color-border-default:  rgba(255, 255, 255, 0.08);
+  --color-border-subtle:   rgba(255, 255, 255, 0.05);
+  --color-border-strong:   rgba(255, 255, 255, 0.16);
+  --color-border-focus:    var(--color-blue-500);
+  --color-border-accent:   var(--color-purple-500);
+
+  /* --- Text --- */
+  --color-text-primary:   rgba(255, 255, 255, 0.95);
+  --color-text-secondary: rgba(255, 255, 255, 0.65);
+  --color-text-tertiary:  rgba(255, 255, 255, 0.40);
+  --color-text-disabled:  rgba(255, 255, 255, 0.25);
+  --color-text-inverse:   var(--color-neutral-900);
+  --color-text-accent:    var(--color-blue-400);
+  --color-text-link:      var(--color-blue-400);
+  --color-text-link-hover:var(--color-blue-300);
+
+  /* --- Status / semantic --- */
+  --color-status-success:         var(--color-green-500);
+  --color-status-success-subtle:  rgba(34, 197, 94,  0.12);
+  --color-status-success-border:  rgba(34, 197, 94,  0.30);
+
+  --color-status-warning:         var(--color-yellow-400);
+  --color-status-warning-subtle:  rgba(250, 204, 21,  0.12);
+  --color-status-warning-border:  rgba(250, 204, 21,  0.30);
+
+  --color-status-error:           var(--color-red-400);
+  --color-status-error-subtle:    rgba(248, 113, 113, 0.12);
+  --color-status-error-border:    rgba(248, 113, 113, 0.30);
+
+  --color-status-info:            var(--color-blue-400);
+  --color-status-info-subtle:     rgba(96,  165, 250, 0.12);
+  --color-status-info-border:     rgba(96,  165, 250, 0.30);
+
+  --color-status-neutral:         var(--color-neutral-400);
+  --color-status-neutral-subtle:  rgba(160, 169, 184, 0.12);
+  --color-status-neutral-border:  rgba(160, 169, 184, 0.25);
+
+  /* --- Agent-role badge colors --- */
+  --color-role-orchestrator:      var(--color-purple-400);
+  --color-role-orchestrator-bg:   rgba(139, 92, 246, 0.15);
+  --color-role-builder:           var(--color-blue-400);
+  --color-role-builder-bg:        rgba(96, 165, 250, 0.15);
+  --color-role-analyst:           var(--color-cyan-400);
+  --color-role-analyst-bg:        rgba(34, 211, 238, 0.15);
+  --color-role-reviewer:          var(--color-orange-400);
+  --color-role-reviewer-bg:       rgba(251, 146, 60,  0.15);
+  --color-role-deployer:          var(--color-green-400);
+  --color-role-deployer-bg:       rgba(74, 222, 128, 0.15);
+
+
+  /* ================================================================
+   * 3. ACCENT GRADIENT DEFINITIONS
+   * Brand-level gradients. Used on hero text, active borders,
+   * progress tracks, and key interactive elements.
+   * ================================================================ */
+
+  /* Primary hero gradient — blue → purple */
+  --gradient-brand:           linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  /* Accent gradient — purple → pink */
+  --gradient-accent:          linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+
+  /* Warm gradient — orange → pink */
+  --gradient-warm:            linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+
+  /* Cool gradient — cyan → blue */
+  --gradient-cool:            linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+
+  /* Success gradient — teal → green */
+  --gradient-success:         linear-gradient(135deg, #06b6d4 0%, #22c55e 100%);
+
+  /* Subtle glass-shimmer — used on card hover highlights */
+  --gradient-glass:           linear-gradient(
+                                135deg,
+                                rgba(255, 255, 255, 0.06) 0%,
+                                rgba(255, 255, 255, 0.01) 100%
+                              );
+
+  /* Active-tab / focus ring gradient border */
+  --gradient-border-active:   linear-gradient(90deg, #667eea, #764ba2, #22d3ee);
+
+  /* Progress bar fill gradient */
+  --gradient-progress:        linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #22d3ee 100%);
+
+  /* Orchestrator node highlight */
+  --gradient-node-orchestrator: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+
+  /* Background hero mesh (page-level ambient) */
+  --gradient-page-ambient:    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+                              radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 55%),
+                              radial-gradient(ellipse at 50% 50%, rgba(34,  211, 238, 0.04) 0%, transparent 70%);
+
+
+  /* ================================================================
+   * 4. SPACING SCALE
+   * Base unit: 4 px. Scale follows a 4-pt grid.
+   * Usage: --space-{n} where n ∈ [0.5, 1, 1.5, 2, 3, 4, 5, 6, 8,
+   *        10, 12, 16, 20, 24, 32, 40, 48, 64]
+   * ================================================================ */
+
+  --space-0:    0px;
+  --space-0\.5: 2px;
+  --space-1:    4px;
+  --space-1\.5: 6px;
+  --space-2:    8px;
+  --space-2\.5: 10px;
+  --space-3:    12px;
+  --space-3\.5: 14px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-7:    28px;
+  --space-8:    32px;
+  --space-9:    36px;
+  --space-10:   40px;
+  --space-11:   44px;
+  --space-12:   48px;
+  --space-14:   56px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:   128px;
+  --space-40:   160px;
+  --space-48:   192px;
+  --space-64:   256px;
+
+  /* Semantic spacing aliases */
+  --space-component-xs:  var(--space-1);    /*  4 px — icon padding         */
+  --space-component-sm:  var(--space-2);    /*  8 px — tight control pad    */
+  --space-component-md:  var(--space-3);    /* 12 px — standard control pad */
+  --space-component-lg:  var(--space-4);    /* 16 px — relaxed control pad  */
+  --space-component-xl:  var(--space-6);    /* 24 px — section padding      */
+  --space-section:       var(--space-8);    /* 32 px — between sections     */
+  --space-page:          var(--space-12);   /* 48 px — page gutters         */
+
+
+  /* ================================================================
+   * 5. TYPOGRAPHY SCALE
+   * ================================================================ */
+
+  /* --- Font families --- */
+  --font-sans:  'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-display: var(--font-sans);  /* Hero headings — could swap to a display face */
+
+  /* --- Font sizes (rem, base = 16 px) --- */
+  --text-2xs:   0.625rem;   /*  10 px */
+  --text-xs:    0.6875rem;  /*  11 px */
+  --text-sm:    0.75rem;    /*  12 px */
+  --text-base:  0.8125rem;  /*  13 px — UI default */
+  --text-md:    0.875rem;   /*  14 px */
+  --text-lg:    1rem;       /*  16 px */
+  --text-xl:    1.125rem;   /*  18 px */
+  --text-2xl:   1.25rem;    /*  20 px */
+  --text-3xl:   1.5rem;     /*  24 px */
+  --text-4xl:   1.875rem;   /*  30 px */
+  --text-5xl:   2.25rem;    /*  36 px */
+  --text-6xl:   3rem;       /*  48 px */
+
+  /* --- Font weights --- */
+  --weight-thin:       100;
+  --weight-light:      300;
+  --weight-regular:    400;
+  --weight-medium:     500;
+  --weight-semibold:   600;
+  --weight-bold:       700;
+  --weight-extrabold:  800;
+  --weight-black:      900;
+
+  /* --- Line heights --- */
+  --leading-none:    1;
+  --leading-tight:   1.25;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose:   2;
+
+  /* --- Letter spacing --- */
+  --tracking-tighter: -0.05em;
+  --tracking-tight:   -0.025em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.025em;
+  --tracking-wider:    0.05em;
+  --tracking-widest:   0.1em;
+
+
+  /* ================================================================
+   * 6. BORDER RADIUS SCALE
+   * ================================================================ */
+
+  --radius-none:   0px;
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     8px;
+  --radius-xl:     12px;
+  --radius-2xl:    16px;
+  --radius-3xl:    20px;
+  --radius-4xl:    24px;
+  --radius-full:   9999px;  /* pill / circle */
+
+  /* Semantic aliases */
+  --radius-badge:   var(--radius-full);
+  --radius-button:  var(--radius-lg);
+  --radius-card:    var(--radius-xl);
+  --radius-modal:   var(--radius-2xl);
+  --radius-input:   var(--radius-md);
+  --radius-tooltip: var(--radius-sm);
+  --radius-tag:     var(--radius-sm);
+  --radius-avatar:  var(--radius-full);
+
+
+  /* ================================================================
+   * 7. SHADOW SCALE
+   * Elevation-based shadows. Darker backgrounds need subtler shadows.
+   * ================================================================ */
+
+  --shadow-none:   none;
+
+  /* xs — tight inset highlight for flat UI controls */
+  --shadow-xs:     0 1px 2px rgba(0, 0, 0, 0.25);
+
+  /* sm — card resting state */
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.30),
+                   0 1px 2px rgba(0, 0, 0, 0.20);
+
+  /* md — card hover / raised state */
+  --shadow-md:     0 4px 6px rgba(0, 0, 0, 0.25),
+                   0 2px 4px rgba(0, 0, 0, 0.15);
+
+  /* lg — floating panels, side drawers */
+  --shadow-lg:     0 10px 15px rgba(0, 0, 0, 0.35),
+                   0  4px  6px rgba(0, 0, 0, 0.20);
+
+  /* xl — modals, popovers */
+  --shadow-xl:     0 20px 25px rgba(0, 0, 0, 0.40),
+                   0  8px 10px rgba(0, 0, 0, 0.25);
+
+  /* 2xl — page-level overlays */
+  --shadow-2xl:    0 25px 50px rgba(0, 0, 0, 0.55);
+
+  /* inner — inset wells, pressed buttons */
+  --shadow-inner:  inset 0 2px 4px rgba(0, 0, 0, 0.30);
+
+  /* Colored glow shadows — brand accent */
+  --shadow-glow-blue:   0 0 16px rgba(59,  130, 246, 0.40),
+                        0 0 32px rgba(59,  130, 246, 0.20);
+  --shadow-glow-purple: 0 0 16px rgba(139,  92, 246, 0.40),
+                        0 0 32px rgba(139,  92, 246, 0.20);
+  --shadow-glow-cyan:   0 0 16px rgba(34,  211, 238, 0.35),
+                        0 0 32px rgba(34,  211, 238, 0.18);
+  --shadow-glow-green:  0 0 16px rgba(34,  197,  94, 0.35),
+                        0 0 32px rgba(34,  197,  94, 0.18);
+
+  /* Focus ring — applies to interactive elements on :focus-visible */
+  --shadow-focus-ring:  0 0 0 3px rgba(59, 130, 246, 0.45);
+
+
+  /* ================================================================
+   * 8. TRANSITION / MOTION
+   * ================================================================ */
+
+  /* Durations */
+  --duration-instant:    0ms;
+  --duration-faster:     75ms;
+  --duration-fast:       100ms;
+  --duration-normal:     150ms;
+  --duration-moderate:   200ms;
+  --duration-slow:       300ms;
+  --duration-slower:     400ms;
+  --duration-slowest:    500ms;
+
+  /* Easing curves */
+  --ease-linear:         linear;
+  --ease-in:             cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:            cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:         cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:         cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring:         cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Composite shorthand tokens */
+  --transition-base:     var(--duration-normal) var(--ease-out);
+  --transition-fast:     var(--duration-fast) var(--ease-out);
+  --transition-slow:     var(--duration-slow) var(--ease-in-out);
+  --transition-color:    color var(--transition-base),
+                         background-color var(--transition-base),
+                         border-color var(--transition-base);
+  --transition-transform: transform var(--duration-moderate) var(--ease-out);
+  --transition-opacity:   opacity var(--duration-normal) var(--ease-out);
+  --transition-shadow:    box-shadow var(--duration-moderate) var(--ease-out);
+
+
+  /* ================================================================
+   * 9. Z-INDEX SCALE
+   * Named layers prevent magic-number collisions.
+   * ================================================================ */
+
+  --z-below:       -1;
+  --z-base:         0;
+  --z-raised:       1;
+  --z-dropdown:    10;
+  --z-sticky:      20;
+  --z-overlay:     30;
+  --z-modal:       40;
+  --z-popover:     50;
+  --z-toast:       60;
+  --z-tooltip:     70;
+  --z-top:        100;
+
+
+  /* ================================================================
+   * 10. LAYOUT / GRID
+   * Structural dimensions for the Maestro POC shell.
+   * ================================================================ */
+
+  /* Sidebar */
+  --sidebar-width:           240px;
+  --sidebar-collapsed-width:  64px;
+
+  /* Top bar / header */
+  --header-height:            56px;
+
+  /* Bottom status bar */
+  --statusbar-height:         32px;
+
+  /* Right-hand detail panel */
+  --detail-panel-width:       320px;
+  --detail-panel-max-width:   400px;
+
+  /* Content area max widths */
+  --content-max-width-sm:    640px;
+  --content-max-width-md:    768px;
+  --content-max-width-lg:   1024px;
+  --content-max-width-xl:   1280px;
+  --content-max-width-2xl:  1536px;
+
+  /* Canvas / graph view */
+  --canvas-node-width:        180px;
+  --canvas-node-min-height:    60px;
+  --canvas-edge-stroke-width:   2px;
+
+  /* Card dimensions */
+  --card-min-width:           200px;
+  --card-max-width:           360px;
+
+  /* Control / input heights */
+  --control-height-xs:   24px;
+  --control-height-sm:   28px;
+  --control-height-md:   32px;
+  --control-height-lg:   40px;
+  --control-height-xl:   48px;
+
+  /* Avatar sizes */
+  --avatar-xs:  20px;
+  --avatar-sm:  24px;
+  --avatar-md:  32px;
+  --avatar-lg:  40px;
+  --avatar-xl:  48px;
+  --avatar-2xl: 64px;
+
+  /* Icon sizes */
+  --icon-xs:  10px;
+  --icon-sm:  12px;
+  --icon-md:  16px;
+  --icon-lg:  20px;
+  --icon-xl:  24px;
+  --icon-2xl: 32px;
+
+  /* Scrollbar */
+  --scrollbar-width:       6px;
+  --scrollbar-thumb-color: rgba(255, 255, 255, 0.12);
+  --scrollbar-track-color: transparent;
+
+  /* Grid gap defaults */
+  --grid-gap-sm:  var(--space-3);
+  --grid-gap-md:  var(--space-4);
+  --grid-gap-lg:  var(--space-6);
+  --grid-gap-xl:  var(--space-8);
+}
+
+/*
+ * ================================================================
+ * USAGE NOTES
+ * ================================================================
+ *
+ * HOW TO CONSUME TOKENS
+ * ─────────────────────
+ * Prefer semantic tokens over primitives in component rules:
+ *
+ *   ✅  background: var(--color-surface-raised);
+ *   ❌  background: var(--color-neutral-850);
+ *
+ *   ✅  padding: var(--space-component-md);
+ *   ❌  padding: 12px;
+ *
+ *   ✅  border-radius: var(--radius-card);
+ *   ❌  border-radius: 12px;
+ *
+ * ADDING NEW TOKENS
+ * ─────────────────
+ * 1. Add the new variable to this file under the appropriate section.
+ * 2. Mirror the addition in the <style> block of maestro-poc.html.
+ * 3. If the token maps to a new primitive, add the primitive first.
+ * 4. Document the intended usage with an inline comment.
+ *
+ * THEMING
+ * ───────
+ * To create a light theme, add a [data-theme="light"] selector block
+ * that overrides only the semantic tokens (section 2). Primitive
+ * ramps and scale tokens should remain unchanged.
+ *
+ * NAMING CONVENTIONS
+ * ──────────────────
+ *  --{category}-{variant}-{modifier}
+ *
+ *  category  : color | space | text | weight | leading | tracking |
+ *              radius | shadow | duration | ease | transition | z | ...
+ *  variant   : surface | border | text | status | role | gradient |
+ *              brand | ... or a t-shirt size (xs, sm, md, lg, xl)
+ *  modifier  : (optional) state or sub-variant, e.g. hover, active,
+ *              subtle, strong, bg
+ *
+ * ================================================================
+ */
